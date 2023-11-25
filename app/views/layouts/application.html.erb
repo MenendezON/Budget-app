@@ -11,8 +11,68 @@
   </head>
 
   <body>
-  <p class="notice"><%= notice %></p>
-       <p class="alert"><%= alert %></p>
+  
+    <!-- Navigation bar -->
+    <header class="header">
+        <!-- Logo -->
+        <a href="./index.html" class="logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/NASA_logo.svg/2449px-NASA_logo.svg.png" alt="Logo of HTS">
+        </a>
+
+        <!-- Hamburger icon -->
+        <input class="side-menu" type="checkbox" id="side-menu" />
+        <label class="hamb" for="side-menu"><span class="hamb-line"></span></label>
+
+        <!-- Menu -->
+
+        <nav class="nav">
+          <ul>
+          <% if user_signed_in? %>
+        <div class='profile'>
+          <img src='https://cdn.iconscout.com/icon/free/png-256/free-avatar-370-456322.png' alt='' />
+          <p><%= current_user.name %> </p>
+        </div> 
+        <% end %>
+            <ul class="menu">
+
+                <li><a href="./about.html">Abt</a></li></a></li>
+                <li><a href="#program">Program</a></li>
+                <li><a href="#">Join</a></li>
+                <li><a href="#">Sponsor</a></li>
+                <li><a href="#">News</a></li>
+                <% if user_signed_in? %>
+                <li>
+                  <%= button_to "Sign out", destroy_user_session_path, method: :delete, class: "btn btn-warning mb-1" %>
+                </li>
+              <% end %>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main content -->
+    <main>
+        <section class="home">
+        <% if notice %> <p class="alert alert-success"><%= notice %></p> <% end %>
+    <% if alert %> <p class="alert alert-danger"><%= alert %></p> <% end %>
+
     <%= yield %>
-  </body>
+
+        <ul id="signin-up-menu">
+        <% if user_signed_in? %>
+          <li>
+            <%= button_to "Sign out", destroy_user_session_path, method: :delete, class: "btn btn-warning mb-1" %>
+          </li>
+        <% else %>
+          <li>
+            <%= link_to "Sign In", new_user_session_path, class: "nav-link" %>
+          </li>
+          <li>
+            <%= link_to "Sign Up", new_user_registration_path, class: "nav-link" %>
+          </li>
+        <% end %>
+      </ul>
+        </section>
+    </main>
+</body>
+
 </html>
