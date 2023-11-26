@@ -1,4 +1,7 @@
+# Gemfile
 source 'https://rubygems.org'
+
+gem 'rspec'
 
 ruby '3.2.2'
 
@@ -52,7 +55,9 @@ gem 'bootsnap', require: false
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
+  gem 'capybara', '~> 3.35.3'
   gem 'debug', platforms: %i[mri windows]
+  gem 'rspec-rails'
 end
 
 group :development do
@@ -68,6 +73,5 @@ end
 
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
-  gem 'capybara'
   gem 'selenium-webdriver'
 end
