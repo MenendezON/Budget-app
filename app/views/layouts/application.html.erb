@@ -35,11 +35,9 @@
         <% end %>
             <ul class="menu">
 
-                <li><a href="./about.html">Abt</a></li></a></li>
-                <li><a href="#program">Program</a></li>
-                <li><a href="#">Join</a></li>
-                <li><a href="#">Sponsor</a></li>
-                <li><a href="#">News</a></li>
+                <li>
+                <%= link_to "Category", categories_path, class: "nav-link" %>
+                </li>
                 <% if user_signed_in? %>
                 <li>
                   <%= button_to "Sign out", destroy_user_session_path, method: :delete, class: "btn btn-warning mb-1" %>

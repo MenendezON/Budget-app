@@ -1,0 +1,38 @@
+<!-- app/views/categories/show.html.erb -->
+
+<div class="transactions-container">
+<h1><%= @category.name %> Category</h1>
+
+<div>
+  <strong>Category Name:</strong>
+  <%= @category.name %>
+</div>
+
+<!-- calculate total amount spent on this category -->
+<div>
+  <strong>Total Spent:</strong>
+  $<%= @category.trades.sum(:amount) %>
+</div>
+
+<h2>Transactions in this Category:</h2>
+
+<% if @category.trades.any? %>
+  <ul>
+    <% @trades.each do |deal| %>
+      <li class="transaction-card">
+        <strong>Transaction name:</strong> <%= trade.name %><br>
+        <strong>Transaction amount:</strong> <%= trade.amount %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No transaction in this category.</p>
+<% end %>
+
+<!-- Add a new transaction button -->
+<button class="add-transaction-button">
+  <%= link_to 'Add a new transaction', new_category_trade_path(@category), style: "color: white;" %>
+</button>
+
+<%= link_to 'Back to Home', root_path %>
+</div>
