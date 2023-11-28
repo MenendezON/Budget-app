@@ -1,37 +1,37 @@
 class CategoriesController < ApplicationController
   def index
-    @user = current_user
-    @categories = @user.categories.includes(:trades)
-  end
-
-  def new
-    @user = current_user
-    @category = @user.categories.new
-  end
-
-  def create
-    @user = current_user
-    @category = @user.categories.new(category_params)
-    if @category.save
-      redirect_to root_path
-    else
-      render :new
-    end
+    @categories = current_user.categories
   end
 
   def show
-    @user = current_user
-    # The `includes` method is used to avoid the N+1 query problem.
-    @category = @user.categories.includes(:trades).find(params[:id])
-    @trades = @category.trades
-    # order deals by most recent first
-    @trades = @trades.order(created_at: :desc)
+    @category = Category.find(params[:id])
+    if @category.author != current_user
+      flash[:alert] = 'Not authorized dude!'
+      redirect_to categories_path
+    end
+    @trades = @category.trades.order(created_at: :desc)
+    @total = @trades.sum(:amount)
+  end
+
+  def new
+    @category = Category.new
+  end
+
+  def create
+    @category = Category.new(category_params)
+    @category.author = current_user
+
+    if @category.save
+      flash[:notice] = 'Category successfully created'
+      redirect_to categories_path
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   private
 
   def category_params
-    params.require(:category)
-      .permit(:name, :icon)
+    params.require(:category).permit(:name, :icon)
   end
 end
