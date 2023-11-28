@@ -1,5 +1,11 @@
 class HomeController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:index]
+
   def index
-    @current_user_name = current_user.name
+    if user_signed_in?
+      redirect_to categories_path
+    else
+      render :index
+    end
   end
 end
