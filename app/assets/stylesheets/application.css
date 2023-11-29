@@ -54,21 +54,20 @@ ul {
   position: sticky;
   top: 0;
   width: 100%;
-  height: 80px;
+  height: 50px;
 }
 
 /* Logo */
 .logo {
   display: inline-block;
   color: var(--white);
-  font-size: 60px;
   margin-right: 10px;
   float: right;
 }
 
 .logo img {
-  display: block;
-  height: 70px;
+  margin-top: 10px;
+  height: 30px;
 }
 
 /* Nav menu */
@@ -79,7 +78,7 @@ ul {
   background-color: var(--main);
   overflow: hidden;
   max-height: 0;
-  top: 80px;
+  top: 50px;
   transition: max-height 0.5s ease-out;
 }
 
@@ -98,7 +97,7 @@ ul {
 .hamb {
   cursor: pointer;
   float: left;
-  padding: 40px 20px;
+  padding: 20px 20px;
 }
 
 .hamb-line {
@@ -168,4 +167,86 @@ ul {
   border-radius: 50px;
   margin: 5px;
   padding: 5px;
+}
+
+.home {
+  background-color: rgb(235, 229, 229);
+  height: 100vh;
+}
+
+.home > .categ > .cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.categ > .cards > .card {
+  background: var(--white);
+  border: 1px solid silver;
+  padding: 5px;
+  width: 42vw;
+  margin: 15px;
+}
+
+.categ > .cards > .card > img {
+  width: 100%;
+}
+
+.categ .categ-date {
+  color: silver;
+  font-size: small;
+}
+
+.trade > .header,
+.categ > .header {
+  display: flex;
+  justify-content: space-between;
+  background-color: white;
+  padding: 10px;
+  border-bottom: 1px solid silver;
+  height: 45px;
+}
+
+.trade > .header > p:first-child {
+  color: silver;
+}
+
+.trade > .header > p:last-child {
+  font-weight: bold;
+}
+
+.trade > .cards > .card {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  background-color: var(--white);
+  padding: 5px 10px 5px 5px;
+  margin: 15px;
+}
+
+.trade > .cards > .card > .left {
+  width: 20vw;
+}
+
+.trade > .cards > .card > .right {
+  width: 70vw;
+}
+
+.trade > .cards > .card > .right > .trade-date {
+  font-size: 10pt;
+  color: silver;
+}
+
+.trade > .cards > .card > .right > .sub-right {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0 15px;
+}
+
+.sub-right p:first-child {
+  color: silver;
+}
+
+.sub-right p:last-child {
+  font-weight: bold;
 }
