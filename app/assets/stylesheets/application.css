@@ -155,15 +155,17 @@ ul {
 .second-menu {
   display: none;
 }
-.profile{
+
+.profile {
   text-align: center;
-  color:var(--white);
-  margin:5px;
+  color: var(--white);
+  margin: 5px;
 }
-.profile>img{
+
+.profile > img {
   width: 100px;
   border: 2px dashed var(--white);
   border-radius: 50px;
-  margin:5px;
-  padding:5px
+  margin: 5px;
+  padding: 5px;
 }
