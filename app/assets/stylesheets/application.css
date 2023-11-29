@@ -155,8 +155,15 @@ ul {
 .second-menu {
   display: none;
 }
-
-.home {
-  height: 60vh;
-  background-size: cover;
+.profile{
+  text-align: center;
+  color:var(--white);
+  margin:5px;
+}
+.profile>img{
+  width: 100px;
+  border: 2px dashed var(--white);
+  border-radius: 50px;
+  margin:5px;
+  padding:5px
 }
