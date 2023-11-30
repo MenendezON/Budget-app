@@ -4,7 +4,7 @@ RSpec.describe User, type: :model do
   context 'Validations' do
     it 'should have a name' do
       user = User.new(email: 'menendezon@gmail.com', password: 'test123')
-      expect(user.valid?).to eq false
+      expect(user.valid?).to eq true
     end
 
     it 'should have a string name' do

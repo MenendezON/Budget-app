@@ -250,3 +250,32 @@ ul {
 .sub-right p:last-child {
   font-weight: bold;
 }
+
+.user-connect {
+  margin-top: 20px;
+  border-top: 1px solid silver;
+  border-bottom: 1px solid silver;
+  background-color: var(--white);
+  padding: 10px;
+}
+
+.user-connect .field input[type=password],
+.user-connect .field input[type=text],
+.user-connect .field input[type=email] {
+  border: 0;
+  border-top: 1px solid silver;
+  width: 100%;
+  height: 40px;
+  padding: 5px;
+  font-size: 13pt;
+  outline: none;
+  color: silver;
+}
+
+.user-connect .field input::placeholder {
+  color: silver;
+}
+
+.user-connect .field input[type=text] {
+  border: 0;
+}

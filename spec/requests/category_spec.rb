@@ -3,14 +3,14 @@ require 'rails_helper'
 RSpec.describe 'Categories', type: :request do
   describe 'GET /index' do
     it 'returns http success' do
-      get '/category/index'
+      get '/categories'
       expect(response).to have_http_status(:success)
     end
   end
 
   describe 'GET /new' do
     it 'returns http success' do
-      get '/category/new'
+      get '/categories/new'
       expect(response).to have_http_status(:success)
     end
   end

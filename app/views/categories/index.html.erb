@@ -5,7 +5,7 @@
   </div>
   <% if @categories.empty? %>
     <p>No categories found</p>
-    <img src="https://cdn-icons-png.flaticon.com/512/7486/7486831.png" alt="No categories found">
+    <img src="https://cdn-icons-png.flaticon.com/512/7486/7486831.png" alt="No categories found" width="100%">
   <% else %>
   <div class='cards'>
       <% @categories.each do |category| %>
@@ -13,7 +13,7 @@
         <%= image_tag(category.icon, alt: "Icon pic") %>
         <div>
           <div>
-            <%= link_to category.name, category_path(category), class: "text-xl font-medium mb-3" %>
+            <%= link_to category.name, category_path(category) %>
             <% if category.trades.sum(:amount) > 0 %>
               <div class="font-medium">
                 $<%= category.trades.sum(:amount) %>
