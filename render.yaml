@@ -1,7 +1,7 @@
 databases:
   - name: Budget-app
     databaseName: budget_app
-    user: postgres
+    user: budget_app_user
 
 services:
   - type: web
