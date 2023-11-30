@@ -14,25 +14,26 @@
   
     <!-- Navigation bar -->
     <header class="header">
+      <% if user_signed_in? %>
         <!-- Logo -->
-        <a href="./index.html" class="logo">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/NASA_logo.svg/2449px-NASA_logo.svg.png" alt="Logo of HTS">
-        </a>
+        <span class="logo">
+            <img src="https://static-00.iconduck.com/assets.00/search-icon-2044x2048-psdrpqwp.png" alt="Logo of HTS">
+        </span>
 
         <!-- Hamburger icon -->
         <input class="side-menu" type="checkbox" id="side-menu" />
+        
         <label class="hamb" for="side-menu"><span class="hamb-line"></span></label>
 
         <!-- Menu -->
 
         <nav class="nav">
           <ul>
-          <% if user_signed_in? %>
         <div class='profile'>
           <img src='https://cdn.iconscout.com/icon/free/png-256/free-avatar-370-456322.png' alt='' />
           <p><%= current_user.name %> </p>
+          <p> <%= button_to "Sign out", destroy_user_session_path, method: :delete %></p>
         </div> 
-        <% end %>
             <ul class="menu">
             <li>
             <%= link_to "Home", root_path, class: "nav-link" %>
@@ -40,13 +41,11 @@
                 <li>
                 <%= link_to "Category", categories_path, class: "nav-link" %>
                 </li>
-                <% if user_signed_in? %>
-                <li>
-                  <%= button_to "Sign out", destroy_user_session_path, method: :delete, class: "btn btn-warning mb-1" %>
-                </li>
-              <% end %>
+                
             </ul>
         </nav>
+        <% end %>
+
     </header>
 
     <!-- Main content -->
@@ -57,20 +56,7 @@
 
     <%= yield %>
 
-        <ul id="signin-up-menu">
-        <% if user_signed_in? %>
-          <li>
-            <%= button_to "Sign out", destroy_user_session_path, method: :delete, class: "btn btn-warning mb-1" %>
-          </li>
-        <% else %>
-          <li>
-            <%= link_to "Sign In", new_user_session_path, class: "nav-link" %>
-          </li>
-          <li>
-            <%= link_to "Sign Up", new_user_registration_path, class: "nav-link" %>
-          </li>
-        <% end %>
-      </ul>
+        
         </section>
     </main>
 </body>

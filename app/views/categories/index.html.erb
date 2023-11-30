@@ -1,16 +1,19 @@
-<div class="flex flex-col items-center my-6">
-  <h1 class="text-3xl font-medium mb-6">Your categories</h1>
+<div class='categ'>
+  <div class="header">
+    <p>Your categories</p>
+    <p><%= link_to "Add new", new_category_path %></p>
+  </div>
   <% if @categories.empty? %>
-    <p class="text-gray-600">No categories found</p>
-    <img src="https://cdn-icons-png.flaticon.com/512/7486/7486831.png" alt="No categories found" class="w-32 h-32 my-10">
+    <p>No categories found</p>
+    <img src="https://cdn-icons-png.flaticon.com/512/7486/7486831.png" alt="No categories found" width="100%">
   <% else %>
-  <div class="flex flex-col gap-6">
+  <div class='cards'>
       <% @categories.each do |category| %>
-      <div class="flex items-center p-6 rounded-lg bg-white shadow-lg w-ful border gap-6">
-        <%= image_tag(category.icon, alt: "Icon pic", class: "w-24 h-24") %>
-        <div class="flex flex-col">
-          <div class="flex justify-between text-gray-600 font-bold">
-            <%= link_to category.name, category_path(category), class: "text-xl font-medium mb-3" %>
+      <div class='card'>
+        <%= image_tag(category.icon, alt: "Icon pic") %>
+        <div>
+          <div>
+            <%= link_to category.name, category_path(category) %>
             <% if category.trades.sum(:amount) > 0 %>
               <div class="font-medium">
                 $<%= category.trades.sum(:amount) %>
@@ -22,7 +25,7 @@
             <% end %>
           </div>
           <hr class="my-1">
-          <div class="text-gray-600 text-start">
+          <div class="categ-date">
             <%= category.created_at.strftime("%B %d, %Y") %>
           </div>
         </div>
@@ -30,5 +33,4 @@
     <% end %>
     </div>
   <% end %>
-  <%= link_to "Add new category", new_category_path, class: "bg-blue-400 text-white py-2 px-12 rounded-lg mt-6 hover:bg-blue-800 mt-4 text-lg" %>
 </div>
