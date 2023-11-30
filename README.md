@@ -44,7 +44,7 @@
 - **For handling user's log and register the App uses device gem**
 
 ### Live demo <a name="live-demo">
-[Budget App]()
+[Budget App](https://capstone-budgetapp.onrender.com)
 </a>
 
 ### Presentation Video <a name="presentation">
