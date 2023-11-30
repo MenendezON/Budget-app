@@ -1,5 +1,8 @@
-<div>
-  <h2>Your categories</h2>
+<div class='categ'>
+  <div class="header">
+    <p>Your categories</p>
+    <p><%= link_to "Add new", new_category_path %></p>
+  </div>
   <% if @categories.empty? %>
     <p>No categories found</p>
     <img src="https://cdn-icons-png.flaticon.com/512/7486/7486831.png" alt="No categories found">
@@ -22,7 +25,7 @@
             <% end %>
           </div>
           <hr class="my-1">
-          <div class="text-gray-600 text-start">
+          <div class="categ-date">
             <%= category.created_at.strftime("%B %d, %Y") %>
           </div>
         </div>
@@ -30,5 +33,4 @@
     <% end %>
     </div>
   <% end %>
-  <%= link_to "Add new category", new_category_path %>
 </div>
