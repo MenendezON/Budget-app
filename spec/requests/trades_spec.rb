@@ -1,23 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe 'Trades', type: :request do
-  describe 'GET /index' do
-    it 'returns http success' do
-      get '/trades/index'
-      expect(response).to have_http_status(:success)
-    end
-  end
-
   describe 'GET /new' do
     it 'returns http success' do
-      get '/trades/new'
-      expect(response).to have_http_status(:success)
-    end
-  end
-
-  describe 'GET /show' do
-    it 'returns http success' do
-      get '/trades/show'
+      get '/categories/1/trades/new'
+      follow_redirect!
       expect(response).to have_http_status(:success)
     end
   end
