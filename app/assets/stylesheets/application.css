@@ -180,6 +180,26 @@ ul {
   justify-content: space-between;
 }
 
+.new-trade-form,
+.trade,
+.categ {
+  height: 82vh;
+  overflow-y: auto;
+}
+
+.btn-new-categ {
+  background-color: var(--second);
+  text-align: center;
+  padding-top: 18px;
+  height: 10.5vh;
+}
+
+.btn-new-categ > a {
+  color: var(--white);
+  border: 1px solid var(--white);
+  padding: 10px 100px;
+}
+
 .categ > .cards > .card {
   background: var(--white);
   border: 1px solid silver;
@@ -259,31 +279,52 @@ ul {
   padding: 10px;
 }
 
-.user-connect .field input[type=password],
-.user-connect .field input[type=text],
-.user-connect .field input[type=email] {
+.field input[type=password],
+.field input[type=text],
+.field input[type=url],
+.field input[type=number],
+.field select,
+.field input[type=email] {
   border: 0;
-  border-top: 1px solid silver;
+  border-bottom: 1px solid silver;
   width: 100%;
   height: 40px;
   padding: 5px;
   font-size: 13pt;
   outline: none;
-  color: silver;
+  color: var(--text);
   margin-bottom: 10px;
+}
+
+.field select {
+  height: auto;
 }
 
 .user-connect .field input::placeholder {
   color: silver;
 }
 
-.user-connect .field input[type=text] {
+.user-connect .field input[type=password] {
   border: 0;
 }
 
-.user-connect .actions input[type=submit] {
-  width: 100%;
-  background-color: var(--main);
+.user-connect .field input[placeholder='Confirm password'] {
+  border-top: 1px solid silver;
+}
+
+.fg-password {
+  text-align: center;
+  margin: 15px 0;
+}
+
+.fg-password a {
+  color: silver;
+}
+
+input[type=submit] {
+  width: 95%;
+  background-color: var(--second);
+  margin-left: 2.5%;
   color: var(--white);
   padding: 10px;
   border: 0;
@@ -291,6 +332,16 @@ ul {
   margin-top: 15px;
 }
 
+header input[type=submit] {
+  width: 100%;
+  background-color: transparent;
+  margin-left: 0;
+  color: var(--white);
+  padding: 0;
+  border: 0;
+  font-size: 11pt;
+  margin-top: 0;
+}
 
 /* splash screen property */
 .splash {
@@ -300,21 +351,23 @@ ul {
 
 .splash > .title {
   height: 80vh;
-  padding-top: 30vh;
+  padding-top: 35vh;
+  font-size: 2rem;
 }
 
 .splash > .button {
   height: 10vh;
-  background-color: var(--main);
+  background-color: transparent;
   padding: 18px 0;
+  margin: 0 10px;
 }
 
 .splash > .button:hover {
-  background-color: var(--second);
+  background-color: var(--main);
 }
 
 .splash > .button > a {
-  color: var(--white);
+  color: silver;
 }
 
 /* header */
@@ -334,11 +387,23 @@ header img {
 }
 
 header h2 {
-  text-transform: uppercase;
+  font-weight: 500;
+}
+
+header button {
+  background-color: transparent;
+  border: 0;
+}
+
+.alert {
+  color: var(--white);
+  padding: 5px;
 }
 
 .alert-danger {
-  padding: 5px;
-  color: var(--white);
   background-color: red;
+}
+
+.alert-success {
+  background-color: var(--second);
 }
