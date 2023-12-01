@@ -1,0 +1,28 @@
+<header>
+  <div>
+    <%= link_to image_tag('icon.png'), category_path(params[:category_id]) %>
+  </div>
+  <div><h2>Add a new trade</h2></div>
+  <div>&nbsp;</div>
+</header>
+
+<div class="new-trade-form">
+<%= render 'shared/errors', obj: @trade %>
+<%= form_with model: @trade, url: category_trades_path do |form| %>
+
+  <div class="field">
+    <%= form.label :name, class: "text-lg font-medium" %>
+    <%= form.text_field :name, placeholder: "Transaction's name" %>
+  </div>
+  <div class="field">
+    <%= form.label :amount, class: "text-lg font-medium" %>
+    <%= form.number_field :amount, placeholder: "Transaction's amount" %>
+  </div>
+
+<label for="countries_multiple" class="block mb-2 text-lg font-medium text-gray-900">Select an option</label>
+<div class="field">
+  <%= form.collection_select(:category_ids, current_user.categories, :id, :name, {}, { multiple: true, class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" }) %>
+</div>
+<%= form.submit class: "actions" %>
+<% end %>
+</div>

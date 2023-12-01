@@ -1,0 +1,48 @@
+<header>
+  <div>
+    <%= image_tag('menu_icon.png') %>
+  </div>
+  <div><h2>Categories</h2></div>
+  <div>
+    <%= button_to image_tag('profile_icon.jpeg'), destroy_user_session_path, method: :delete %>
+  </div>
+</header>
+
+<div class='categ'>
+  <div class="header">
+    <p>List of categories</p>
+  </div>
+  <% if @categories.empty? %>
+    <p>No categories found</p>
+    <img src="https://cdn-icons-png.flaticon.com/512/7486/7486831.png" alt="No categories found" width="100%">
+  <% else %>
+  <div class='cards'>
+      <% @categories.each do |category| %>
+      <div class='card'>
+        <%= image_tag(category.icon, alt: "Icon pic") %>
+        <div>
+          <div>
+            <%= link_to category.name, category_path(category) %>
+            <% if category.trades.sum(:amount) > 0 %>
+              <div class="font-medium">
+                <%= category.trades.count %>
+              </div>
+            <% else %>
+            <div class="font-medium">
+              Free
+            </div>
+            <% end %>
+          </div>
+          <hr class="my-1">
+          <div class="categ-date">
+            <%= category.created_at.strftime("%B %d, %Y") %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    </div>
+  <% end %>
+</div>
+<div class="btn-new-categ">
+  <%= link_to "Add new category", new_category_path %>
+</div>
