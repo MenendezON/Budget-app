@@ -26,7 +26,7 @@
 
 # 📖 Budget App <a name="about-project"></a>
 
-**Budget App** is a web project based on Ruby on Rails, using Postgresql as a database. To use this app, the user has to create an account, then log in, at this point the user can manage his data like creating and displaying new categories, then new records for their trades(transactions). Each category has a name and an icon, and each trade(transaction) has a name, amount, and category. The user also can see the amount for each category and the total amount for all categories.
+**Budget App** is a web project based on Ruby on Rails, using Postgresql as a database. To use this app, the user has to create an account, then log in, at this point the user can manage his data like creating and displaying new categories, then new records for their trades(transactions). Each category has a name and an icon, and each trade(transaction) has a name, amount, and category. The user also can see for each category the total amount and the total amount of trades.
 
 ## 🛠 Built With <a name="built-with"></a>
 
