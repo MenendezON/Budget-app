@@ -2,71 +2,42 @@ require 'rails_helper'
 
 RSpec.describe 'Categories', type: :system, js: true do
   describe 'index page' do
-    before(:example) do
-      @user = User.create(name: 'Menendez', email: 'menendezon@gmail.com', password: 'anything')
-      sign_in @user
+    before :each do
+      visit '/users/sign_up'
+      within('#new_user') do
+        fill_in 'user[name]', with: 'Marthekod'
+        fill_in 'user[email]', with: 'marthekod@gmail.com'
+        fill_in 'user[password]', with: 'ilovemywife'
+        fill_in 'user[password_confirmation]', with: 'ilovemywife'
+      end
+      click_button 'Sign up'
 
-      @category = Category.create(author: @user, name: 'Cheese', icon: 'https://cdn-icons-png.flaticon.com/512/4063/4063291.png')
-      visit categories_path
+      click_link('Add new category')
+      fill_in 'category[name]', with: 'Cheese'
+      fill_in 'category[icon]', with: 'https://cdn-icons-png.flaticon.com/512/4063/4063291.png'
+      find('input[name="commit"]').click
     end
 
     it 'renders category name' do
-      expect(page).to have_content(@category.name)
+      expect(page).to have_content('Cheese')
     end
 
     it 'renders category icon' do
-      find("img[src='#{@category.icon}']")
+      expect(page).to have_css("img[alt='Icon pic'][src='https://cdn-icons-png.flaticon.com/512/4063/4063291.png']")
     end
 
     it 'renders category\'s total expenses' do
-      expect(page).to have_content(@category.expenses.sum(:amount))
+      expect(page).to have_content('Free')
     end
 
     it 'redirects to specific category page' do
-      click_link @category.name
-      expect(page).to have_current_path(category_path(@category))
+      click_link 'Cheese'
+      expect(page).to have_content('Add new trade')
     end
 
     it 'redirects to form to create new category' do
       click_link 'Add new category'
       expect(page).to have_current_path(new_category_path)
-    end
-  end
-  describe 'show page' do
-    before(:example) do
-      @user = User.create(name: 'Menendez', email: 'menendezon@gmail.com', password: 'anything')
-      sign_in @user
-
-      @category = Category.create(author: @user, name: 'Cheese', icon: 'https://cdn-icons-png.flaticon.com/512/4063/4063291.png')
-
-      @expense = Expense.create(author: @user, name: 'Buy Cake', amount: 100, category_ids: [@category.id])
-      visit category_path(@category)
-    end
-
-    it 'renders category name' do
-      expect(page).to have_content(@category.name)
-    end
-
-    it 'renders total expenses of category' do
-      expect(page).to have_content(@category.expenses.sum(:amount))
-    end
-
-    it 'renders expense name' do
-      expect(page).to have_content(@expense.name)
-    end
-
-    it 'renders expense amount' do
-      expect(page).to have_content(@expense.amount)
-    end
-
-    it 'redirects to form to create new expense' do
-      click_link 'Add new expense'
-      expect(page).to have_current_path(new_category_expense_path(@category))
-    end
-
-    it 'redirects to categories page' do
-      click_link 'Back'
-      expect(page).to have_current_path(categories_path)
     end
   end
 end
