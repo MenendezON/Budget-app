@@ -1,15 +1,22 @@
+<header>
+  <div>
+    <%= link_to image_tag('icon.png'), categories_path %>
+  </div>
+  <div><h2>Add a new category</h2></div>
+  <div>&nbsp;</div>
+</header>
+
 <div class="bg-white p-6 rounded-lg shadow-lg">
   <%= render 'shared/errors', obj: @category %>
   <%= form_with model: @category do |form| %>
-    <div class="flex flex-col mb-4">
+    <div class="field">
       <%= form.label :name, class: "text-lg font-medium mb-2" %>
-      <%= form.text_field :name, class: "form-input mt-1 rounded-lg" %>
+      <%= form.text_field :name, placeholder:"Category's name" %>
     </div>
-    <div class="flex flex-col mb-4">
+    <div class="field">
       <%= form.label :icon, class: "text-lg font-medium mb-2" %>
-      <%= form.text_field :icon, class: "form-input mt-1 rounded-lg", placeholder: "Icon URL" %>
+      <%= form.url_field :icon, class: "form-input mt-1 rounded-lg", placeholder: "Icon URL" %>
     </div>
-    <%= form.submit "Save", class: "bg-blue-500 text-white py-2 px-4 rounded" %>
+    <%= form.submit "Save", class: "actions" %>
   <% end %>
-  <%= link_to "Back", categories_path, class: "text-blue-500 underline mt-4" %>
 </div>

@@ -1,7 +1,16 @@
+<header>
+  <div>
+    <%= image_tag('menu_icon.png') %>
+  </div>
+  <div><h2>Categories</h2></div>
+  <div>
+    <%= button_to image_tag('profile_icon'), destroy_user_session_path, method: :delete %>
+  </div>
+</header>
+
 <div class='categ'>
   <div class="header">
     <p>List of categories</p>
-    <p><%= link_to "Add new", new_category_path %></p>
   </div>
   <% if @categories.empty? %>
     <p>No categories found</p>
@@ -16,7 +25,7 @@
             <%= link_to category.name, category_path(category) %>
             <% if category.trades.sum(:amount) > 0 %>
               <div class="font-medium">
-                $<%= category.trades.sum(:amount) %>
+                <%= category.trades.count %>
               </div>
             <% else %>
             <div class="font-medium">
@@ -33,4 +42,7 @@
     <% end %>
     </div>
   <% end %>
+</div>
+<div class="btn-new-categ">
+  <%= link_to "Add new category", new_category_path %>
 </div>

@@ -1,7 +1,15 @@
+<header>
+  <div>
+    <%= link_to image_tag('icon.png'), categories_path %>
+  </div>
+  <div><h2>Transactions</h2></div>
+  <div>&nbsp;</div>
+</header>
+
 <div class="trade">
   <div class="header">
     <p><%= @category.name %></p>
-  <p>$<%= @total %></p>
+    <p>$<%= @total %></p>
   </div>
   <% if @total == 0 %>
   <%= link_to "Add new trade", new_category_trade_path(@category), class: "bg-blue-400 text-white py-2 px-12 text-lg rounded-lg mt-6 absolute bottom-10" %> |
@@ -26,4 +34,8 @@
     <% end %>
     </div>
 <% end %>
+</div>
+
+<div class="btn-new-categ">
+<%= link_to 'Add a new transaction', new_category_trade_path(@category) %>
 </div>

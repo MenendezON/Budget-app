@@ -1,21 +1,28 @@
-<div class="p-5 bg-white rounded-lg shadow">
+<header>
+  <div>
+    <%= link_to image_tag('icon.png'), category_path(params[:category_id]) %>
+  </div>
+  <div><h2>Add a new trade</h2></div>
+  <div>&nbsp;</div>
+</header>
+
+<div class="new-trade-form">
 <%= render 'shared/errors', obj: @trade %>
 <%= form_with model: @trade, url: category_trades_path do |form| %>
 
-  <div class="mb-3">
+  <div class="field">
     <%= form.label :name, class: "text-lg font-medium" %>
-    <%= form.text_field :name, class: "w-full p-2 rounded-lg" %>
+    <%= form.text_field :name, placeholder: "Transaction's name" %>
   </div>
-  <div class="mb-3">
+  <div class="field">
     <%= form.label :amount, class: "text-lg font-medium" %>
-    <%= form.number_field :amount, class: "w-full p-2 rounded-lg" %>
+    <%= form.number_field :amount, placeholder: "Transaction's amount" %>
   </div>
 
 <label for="countries_multiple" class="block mb-2 text-lg font-medium text-gray-900">Select an option</label>
-<div class="mb-3 rounded-lg shadow-md">
+<div class="field">
   <%= form.collection_select(:category_ids, current_user.categories, :id, :name, {}, { multiple: true, class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" }) %>
 </div>
-<%= form.submit class: "p-2 rounded-lg bg-blue-500 text-white font-medium hover:bg-blue-600" %>
+<%= form.submit class: "actions" %>
 <% end %>
-<%= link_to "Back", category_path(@category), class: "text-lg font-medium" %>
 </div>
