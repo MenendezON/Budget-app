@@ -28,7 +28,7 @@
 }
 /* stylelint-disable no-descending-specificity */
 body {
-  font-family: "lato", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-weight: 400;
   font-style: normal;
   font-size: 16px;
@@ -270,6 +270,7 @@ ul {
   font-size: 13pt;
   outline: none;
   color: silver;
+  margin-bottom: 10px;
 }
 
 .user-connect .field input::placeholder {
@@ -278,4 +279,66 @@ ul {
 
 .user-connect .field input[type=text] {
   border: 0;
+}
+
+.user-connect .actions input[type=submit] {
+  width: 100%;
+  background-color: var(--main);
+  color: var(--white);
+  padding: 10px;
+  border: 0;
+  font-size: 11pt;
+  margin-top: 15px;
+}
+
+
+/* splash screen property */
+.splash {
+  height: 100vh;
+  text-align: center;
+}
+
+.splash > .title {
+  height: 80vh;
+  padding-top: 30vh;
+}
+
+.splash > .button {
+  height: 10vh;
+  background-color: var(--main);
+  padding: 18px 0;
+}
+
+.splash > .button:hover {
+  background-color: var(--second);
+}
+
+.splash > .button > a {
+  color: var(--white);
+}
+
+/* header */
+header {
+  background-color: var(--main);
+  justify-content: space-between;
+  align-items: center;
+  color: var(--white);
+  display: flex;
+  flex-direction: row;
+  height: 50px;
+  padding: 10px;
+}
+
+header img {
+  width: 25px;
+}
+
+header h2 {
+  text-transform: uppercase;
+}
+
+.alert-danger {
+  padding: 5px;
+  color: var(--white);
+  background-color: red;
 }

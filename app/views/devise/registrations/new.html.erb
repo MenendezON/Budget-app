@@ -1,5 +1,14 @@
-<div class="user-connect">
+<header>
+  <div>
+    <a href="/">
+    <%= image_tag('icon.png') %>
+    </a>
+  </div>
+  <div><h2>Register</h2></div>
+  <div>NEXT</div>
+</header>
 
+<div class="user-connect">
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>

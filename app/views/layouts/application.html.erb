@@ -12,9 +12,9 @@
 
   <body>
   
+      <% if user_signed_in? %>
     <!-- Navigation bar -->
     <header class="header">
-      <% if user_signed_in? %>
         <!-- Logo -->
         <span class="logo">
             <img src="https://static-00.iconduck.com/assets.00/search-icon-2044x2048-psdrpqwp.png" alt="Logo of HTS">
@@ -44,10 +44,10 @@
                 
             </ul>
         </nav>
-        <% end %>
 
     </header>
 
+        <% end %>
     <!-- Main content -->
     <main>
         <section class="home">
